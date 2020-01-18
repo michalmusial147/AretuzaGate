@@ -15,7 +15,8 @@ public class Player {
     private float rotation;
     private boolean isShooting;
 
-    public Player(String playerName, float positionX, float positionY, float positionZ, float rotation, boolean isShooting , String shipName) {
+    public Player(String playerName, float positionX, float positionY, float positionZ, float rotation, boolean isShooting , String shipName)
+    {
         this.playerName = playerName;
         this.positionX = positionX;
         this.positionY = positionY;
@@ -24,8 +25,9 @@ public class Player {
         this.isShooting = isShooting;
         this.shipName = shipName;
     }
-    public String GetPlayerAsJson(){
-        JsonBuilderFactory builderFactory = Json.createBuilderFactory(Collections.<String, Object>emptyMap());
+    public String GetPlayerAsJson()
+    {
+        JsonBuilderFactory builderFactory = Json.createBuilderFactory(Collections.emptyMap());
         JsonObject playerObject = builderFactory.createObjectBuilder()
                 .add("playerName", this.playerName)
                 .add("positionX", this.positionX)
@@ -33,6 +35,7 @@ public class Player {
                 .add("positionZ", this.positionZ)
                 .add("rotation", this.rotation)
                 .add("isShooting", this.isShooting)
+                .add("shipName", this.shipName)
                 .build();
         return playerObject.toString();
     }
