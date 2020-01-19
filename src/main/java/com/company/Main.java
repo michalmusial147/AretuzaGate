@@ -12,9 +12,10 @@ import java.nio.charset.StandardCharsets;
  */
 public class Main
 {
-    private static GameServersProducer GamesManager = new GameServersProducer();
+    private static GameServersProducer gameServersProducer = new GameServersProducer();
     private static int INS_PORT = 9000;
     private static String key = "SEFCNwdjBj";
+
 
     public static class InformationsNetSupplier
     {
@@ -85,14 +86,18 @@ public class Main
                 }
                 header = lines[1];
                 json = lines[2];
-                if (header.equals("CONNECT")) {
+                if (header.equals("CONNECT"))
+                {
                     System.out.println("New client: " + json);
                     sendResponse(os, "OK");
                 }
-                else if (header.equals("GET_GAME_SERVERS")) {
-                    System.out.println("New client: " + json);
-                    sendResponse(os, "blabla");
+                else if (header.equals("GET_GAME_SERVERS"))
+                {
+                    //System.out.println("New client: " + json);
+                    sendResponse(os, gameServersProducer.getGameServersListJson());
                 }
+
+
 
             }
             socket.close();
@@ -140,7 +145,7 @@ public class Main
     public static void main(String[] args)
     {
         InformationsNetSupplier NetSupplier;
-        GameServersProducer gameServersProducer;
+
         try
         {
             NetSupplier = new InformationsNetSupplier(INS_PORT);
@@ -155,9 +160,9 @@ public class Main
         gameServersProducer = new GameServersProducer();
         try
         {
-            gameServersProducer.addServer("Hummel",0,2);
-            gameServersProducer.addServer("Marian",0,2);
-            gameServersProducer.addServer("Lambert",0,2);
+             gameServersProducer.addServer("Hummel",0,2);
+             gameServersProducer.addServer("Marian",0,2);
+             gameServersProducer.addServer("Lambert",0,2);
         }
         catch (SocketException e)
         {

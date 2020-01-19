@@ -1,5 +1,6 @@
 package com.company;
 import com.company.config.Config;
+import com.company.model.Player;
 
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -7,6 +8,7 @@ import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
 
 public class GameServer
 {
@@ -15,6 +17,7 @@ public class GameServer
     public int maxNumberOfPlayers;
     public int NumberOfPlayers;
     public DatagramSocket datagramSocket;
+    HashMap<String, Player> playersHashMap = new HashMap<String, Player>();
 
     public GameServer(String name, int selectedPort, int maxNumberOfPlayers) throws SocketException
     {

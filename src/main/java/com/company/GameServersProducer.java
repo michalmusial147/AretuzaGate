@@ -50,11 +50,9 @@ public class GameServersProducer {
             GameServerListArrayBuilder.add(GameServerObject);
         }
         JsonArray GameServerListArray = GameServerListArrayBuilder.build();
-
-        JsonObject GameServerList = builderFactory.createObjectBuilder()
-                .add("", GameServerListArray).build();
-
-        return GameServerList.toString();
+        //JsonObject bufer = builderFactory.createObjectBuilder()
+              //  .add("name", gs.name);
+        return GameServerListArray.toString();
     }
 
 }
