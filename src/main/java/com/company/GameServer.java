@@ -2,7 +2,6 @@ package com.company;
 import com.company.config.Config;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
@@ -11,18 +10,19 @@ import java.nio.charset.StandardCharsets;
 
 public class GameServer
 {
-    private String name;
-    private int listeningPort;
-    private int maxNumberOfPlayers;
-    private int NumberOfPlayers;
-    DatagramSocket datagramSocket;
+    public String name;
+    public int listeningPort;
+    public int maxNumberOfPlayers;
+    public int NumberOfPlayers;
+    public DatagramSocket datagramSocket;
 
-    public GameServer(String name, int selectedPort, int maxNumberOfPlayers) throws SocketException {
-        this.listeningPort = selectedPort;
+    public GameServer(String name, int selectedPort, int maxNumberOfPlayers) throws SocketException
+    {
         this.maxNumberOfPlayers = maxNumberOfPlayers;
         this.name = name;
         this.NumberOfPlayers = 0;
-        datagramSocket = new DatagramSocket(listeningPort);
+        this.datagramSocket = new DatagramSocket(0);
+        this.listeningPort = datagramSocket.getLocalPort();
     }
 
     public void start()
@@ -63,6 +63,10 @@ public class GameServer
             */
         }
     }
+    @Override
+    protected void finalize(){
+        datagramSocket.close();
+    }
     public String getName()
     {
         return name;
@@ -72,4 +76,5 @@ public class GameServer
     {
         return maxNumberOfPlayers;
     }
+
 }
