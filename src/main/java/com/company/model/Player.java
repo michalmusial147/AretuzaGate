@@ -8,7 +8,7 @@ import javax.json.JsonObject;
 public class Player {
 
     private String playerName;
-    private String shipName;
+    private String shipName; //ship1 , ship2
     private float positionX;
     private float positionY;
     private float positionZ;

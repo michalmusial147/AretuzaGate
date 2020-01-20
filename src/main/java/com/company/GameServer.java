@@ -17,7 +17,7 @@ public class GameServer
     public int maxNumberOfPlayers;
     public int NumberOfPlayers;
     public DatagramSocket datagramSocket;
-    HashMap<String, Player> playersHashMap = new HashMap<String, Player>();
+    //HashMap<InetAddress, Player> playersHashMap = new HashMap<InetAddress, Player>();
 
     public GameServer(String name, int selectedPort, int maxNumberOfPlayers) throws SocketException
     {

@@ -94,6 +94,7 @@ public class Main
                 else if (header.equals("GET_GAME_SERVERS"))
                 {
                     //System.out.println("New client: " + json);
+
                     sendResponse(os, gameServersProducer.getGameServersListJson());
                 }
 
